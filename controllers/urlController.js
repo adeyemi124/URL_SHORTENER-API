@@ -1,5 +1,4 @@
-// controllers/urlController.js
-// Dummy controller for URL Shortener API
+
 
 const { saveUrl, findByOriginalUrl, findByShortCode } = require('../models/urlModel');
 const crypto = require('crypto');
@@ -13,7 +12,8 @@ exports.shortenUrl = async (req, res) => {
     // Check if URL already exists
     let url = findByOriginalUrl(longUrl);
     if (url) {
-      return res.json({ shortCode: url.shortCode, shortUrl: `${req.protocol}://${req.get('host')}/${url.shortCode}` });
+      // Always return the hardcoded short URL format
+      return res.json({ shortCode: url.shortCode, shortUrl: `http://shorturl/${url.shortCode}` });
     }
     // Generate a unique short code
     let shortCode;
@@ -23,7 +23,8 @@ exports.shortenUrl = async (req, res) => {
       exists = findByShortCode(shortCode);
     }
     url = saveUrl(longUrl, shortCode);
-    res.json({ shortCode, shortUrl: `${req.protocol}://${req.get('host')}/${shortCode}` });
+    // Always return the hardcoded short URL format
+    res.json({ shortCode, shortUrl: `http://shorturl/${shortCode}` });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
@@ -41,4 +42,4 @@ exports.redirectUrl = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
-}; 
+};
