@@ -1,0 +1,59 @@
+# ======================
+# Node.js Essentials
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ======================
+# Environment Variables
+# ======================
+.env
+.env.*.local
+.env.local
+
+# ======================
+# Build Output (Front/Back)
+# ======================
+build/
+dist/
+
+# ======================
+# Logs & Reports
+# ======================
+logs/
+*.log
+*.tsbuildinfo
+
+# ======================
+# OS and Editor Junk Files
+# ======================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ======================
+# VS Code
+# ======================
+.vscode/
+.history/
+
+# ======================
+# Testing Coverage
+# ======================
+coverage/
+.nyc_output/
+
+# ======================
+# Cloudinary Cache (if any)
+# ======================
+.cloudinary/
+
+# ======================
+# Miscellaneous
+# ======================
+tmp/
+temp/
+.cache/
