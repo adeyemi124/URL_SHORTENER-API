@@ -5,7 +5,7 @@ const port = 5000;
 const urlRoutes = require('./routes/urlRoutes');
 
 app.use(express.json());
-app.use(cors({ origin: 'https://url-shortener-three-sigma.vercel.app/' }));
+app.use(cors({ origin: ['http://localhost:5173', 'https://url-shortener-three-sigma.vercel.app'] }));
 
 app.get('/', (req, res) => {
   res.send('');

@@ -3,6 +3,11 @@
 const { saveUrl, findByOriginalUrl, findByShortCode } = require('../models/urlModel');
 const crypto = require('crypto');
 
+
+
+
+
+
 exports.shortenUrl = async (req, res) => {
   const { longUrl } = req.body;
   if (!longUrl) {
@@ -29,6 +34,9 @@ exports.shortenUrl = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+
+
 
 exports.redirectUrl = async (req, res) => {
   const { shortCode } = req.params;
