@@ -17,7 +17,8 @@ exports.shortenUrl = async (req, res) => {
     // Check if URL already exists
     let url = findByOriginalUrl(longUrl);
     if (url) {
-      // Always return the hardcoded short URL format
+      
+      
       return res.json({ shortCode: url.shortCode, shortUrl: `http://shorturl/${url.shortCode}` });
     }
     // Generate a unique short code
