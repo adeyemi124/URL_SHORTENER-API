@@ -1,8 +1,8 @@
-
-
 const { saveUrl, findByOriginalUrl, findByShortCode } = require('../models/urlModel');
 const crypto = require('crypto');
 
+// Set your base URL here. Use an environment variable in production.
+const BASE_URL = process.env.BASE_URL || 'http://localhost:5000';
 
 
 
@@ -19,7 +19,8 @@ exports.shortenUrl = async (req, res) => {
     if (url) {
       
       
-      return res.json({ shortCode: url.shortCode, shortUrl: `http://shorturl/${url.shortCode}` });
+      // Always return the short URL using the base URL
+      return res.json({ shortCode: url.shortCode, shortUrl: `${BASE_URL}/${url.shortCode}` });
     }
     // Generate a unique short code
     let shortCode;
@@ -29,8 +30,8 @@ exports.shortenUrl = async (req, res) => {
       exists = findByShortCode(shortCode);
     }
     url = saveUrl(longUrl, shortCode);
-    // Always return the hardcoded short URL format
-    res.json({ shortCode, shortUrl: `http://shorturl/${shortCode}` });
+    // Always return the short URL using the base URL
+    res.json({ shortCode, shortUrl: `${BASE_URL}/${shortCode}` });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
